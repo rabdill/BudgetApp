@@ -3,7 +3,8 @@
 	</head>
 
 	<body>
-		<h1>${budget}</h1>
+		<h1>${session.currentBudget}</h1>
+		Add: <g:link controller="transaction">transaction</g:link> / <g:link controller="account">account</g:link><br>
 		<table border="1">
 			<thead>
 				<tr>

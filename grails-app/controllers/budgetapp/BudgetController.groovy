@@ -8,12 +8,12 @@ class BudgetController {
 		return [allBudgets:allBudgets]
 	}
 	
-	def viewBudget() {
-	   def allTransactions = Transaction.findAll("from Transaction as t where t.budget=:budget order by t.date",[budget:Budget.findWhere(name:params.budgetSelect)])
-	   def allAccounts = Account.findAll("from Account as a where a.budget=:budget",[budget:Budget.findWhere(name:params.budgetSelect)])
-	   	   
-	   def transactionCount = Transaction.countByBudget(Budget.findWhere(name:params.budgetSelect))
-	   def accountCount = Account.countByBudget(Budget.findWhere(name:params.budgetSelect))
+	def view() {
+		if(params.budgetSelect) session.currentBudget = Budget.findWhere(name:params.budgetSelect)
+		def allTransactions = Transaction.findAll("from Transaction as t where t.budget=:budget order by t.date",[budget:session.currentBudget])
+		def allAccounts = Account.findAll("from Account as a where a.budget=:budget",[budget:session.currentBudget])   
+		def transactionCount = Transaction.countByBudget(session.currentBudget)
+		def accountCount = Account.countByBudget(session.currentBudget)
 	   def date = new Date[transactionCount]
 	   def description = new String[transactionCount]
 	   def amount = new Integer[transactionCount]

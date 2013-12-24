@@ -4,13 +4,18 @@
 	</head>
 	
 	<body>
-		<h1>Which budget do you want to add a transaction to?</h1>
-		<g:form name="selector" action="createForm" method="GET">
-			<g:select name="budgetSelect"
-	          from="${allBudgets}"
+		<h1>Transaction info</h1>
+		<g:form name="transaction" action="create" method="POST">
+			Date:<g:textField name="date"/><br>
+			Description:<g:textField name="description" /><br>
+			Amount:<g:textField name="amount" /><hr>
+			This transaction affects another account:<g:checkBox name="accountFlag" /><br>
+			(Which one?)<g:select name="accountLink"
+	          from="${allAccounts}"
 	          value="name"
-	          optionKey="name" />
-	        <g:submitButton name="selectorButton" value="This one" />
+	          optionKey="id" /><br>
+	        <g:hiddenField name="budget" value="${session.currentBudget }" />
+	        <g:submitButton name="submitButton" value="Create" />
 		</g:form>
          
          
