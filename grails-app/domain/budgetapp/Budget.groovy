@@ -4,7 +4,7 @@ class Budget {
 	String name
 	String toString() {return name	}
 	
-	static hasMany = [transactions:Transaction, accounts:Account]
+	static hasMany = [transactions:Transaction, accounts:Account, repeatingTransactions: RepeatingTransaction]
 	
 	
     static constraints = {

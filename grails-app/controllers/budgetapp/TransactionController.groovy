@@ -20,10 +20,19 @@ class TransactionController {
 		def newTransaction = new Transaction(date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, budget:session.currentBudget).save(failOnError:true)
 		
 		def repeated = 0
+		
+		
+		
+		
 		//	If it repeats:
-		if(params.repeatFlag)	{
+		if(params.repeatFlag)	{	
 			
 			def formattedRepeatDate = new Date().parse("MM/dd/yyyy", params.repeatDate)
+			
+			//	record it as a repeating transaction:
+			def newRepeater = new RepeatingTransaction(date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, repeatType:params.repeatType, repeatVariable:params.repeatVariable, repeatDate:formattedRepeatDate, budget:session.currentBudget).save(failOnError:true)
+			
+			
 			while(formattedDate < formattedRepeatDate)
 			{
 				repeated++
@@ -37,7 +46,8 @@ class TransactionController {
 						formattedDate = formattedDate + 1.month
 					}
 				}
-				newTransaction = new Transaction(date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, budget:session.currentBudget).save(failOnError:true)
+				
+				if(formattedDate <= formattedRepeatDate) newTransaction = new Transaction(date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, budget:session.currentBudget).save(failOnError:true)
 				
 			}
 		}
