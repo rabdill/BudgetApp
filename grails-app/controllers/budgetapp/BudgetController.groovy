@@ -57,11 +57,24 @@ class BudgetController {
 		   
 		   row++
 	   }
-	   
-	  
-	   
+	      
 	   return [date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
    }
+	
+	
+	
+	def createForm()	{
+		//	nothing here for now	
+	}
+	
+	
+	
+	
+	def create()	{
+		def newBudget = new Budget(name:params.name).save(failOnError:true)
+		
+		return [newBudget:newBudget]
+		}
 	
 	
 }

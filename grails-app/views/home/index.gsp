@@ -8,7 +8,7 @@
 	
 	<ul>
 		<li><g:link controller="budget">View budgets</g:link></li>
-		
+		<li><g:link controller="budget" action="createForm">Add a budget</g:link></li>
     </ul>
 	     
          
