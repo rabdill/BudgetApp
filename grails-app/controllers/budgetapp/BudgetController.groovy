@@ -1,5 +1,9 @@
 package budgetapp
 
+
+
+//	Graphing: http://sysgears.com/articles/drawing-charts-grails-0/
+
 class BudgetController {
 	
 	def index()	{

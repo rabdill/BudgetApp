@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
+<g:render template="/templates/headerInfo" />
+
 	</head>
 	
 	<body>

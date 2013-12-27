@@ -1,11 +1,14 @@
-<html>
-	<head>
+<g:render template="/templates/headerInfo" />
+
 	</head>
 
 	<body>
 		<h1>${session.currentBudget}</h1>
 		Add: <g:link controller="transaction">transaction</g:link> / <g:link controller="account">account</g:link><br>
-		<table border="1">
+		
+		
+	<div class="col-lg-6 col-md-6 col-sm-12">
+		<table border="1" cellpadding="5">
 			<thead>
 				<tr>
 					<th>Date</th>
@@ -55,5 +58,22 @@
 				</g:while>
 			</tbody>
 		</table>
+		
+	</div>	<!-- 	Closes table half of the page -->
+	
+	
+	
+	
+	<div class="col-lg-6 col-md-6 col-sm-12">
+		
+		
+	</div>	<!-- 	Closes graph half of the page -->
+	
+	
+	
+	
+	
+	
+	
 	</body>
 </html>

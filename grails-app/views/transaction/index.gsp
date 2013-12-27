@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
+<g:render template="/templates/headerInfo" />
 	</head>
 	
 	<body>
@@ -25,7 +23,7 @@
 				<option value="date">On this date of every month</option>
 			</select><br>
 			(x:<g:textField name="repeatVariable"/>)<br>
-			Until:<g:textField name="repeatDate" value="01/15/2015"/><br>
+			Until:<g:textField name="repeatDate" value="12/31/2014"/><br>
 	        
 	        <br><g:submitButton name="submitButton" value="Create" />
 		</g:form>
