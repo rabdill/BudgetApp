@@ -1,6 +1,6 @@
 <g:render template="/templates/headerInfo" />
 <gvisualization:apiImport/>
-<gvisualization:areaCoreChart elementId="visualization" title="Cash" width="${400}" height="${240}" columns="${ chartData.columns }" data="${ chartData.data }" />
+<gvisualization:areaCoreChart elementId="visualization" title="Cash"  columns="${ chartData.columns }" data="${ chartData.data }" />
 
 	</head>
 
@@ -9,14 +9,14 @@
 		Add: <g:link controller="transaction">transaction</g:link> / <g:link controller="account">account</g:link><br>
 		<br />
 		
-	
+	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
 		<table border="1" cellpadding="5">
 			<thead>
 				<tr>
 					<th>Date</th>
 					<th>Description</th>
 					<th>Amount</th>
-					<th>Cash</th>
+					<th style="padding: 0 14px;">Cash</th>
 					<g:each in="${allAccounts}">
 						<th>${it.name }</th>
 					</g:each>
@@ -40,7 +40,7 @@
 					    <td><b><font color="red">(${-runningTotal[iterate] })</font></b></td>
 					</g:if>
 					<g:else>
-					    <td>${runningTotal[iterate] }</td>
+					    <td><strong>${runningTotal[iterate] }</strong></td>
 					</g:else>
 						
 				    
@@ -60,17 +60,18 @@
 				</g:while>
 			</tbody>
 		</table>
-		
+	</div>	
 	
 	
 	
 	
 	
+	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
 	
 
-        <div id="visualization" style="width: 600px; height: 400px;"></div>		
+        <div id="visualization" style="width: 800px; height: 500px"></div>		
   
-	
+	</div>
 	
 	
 	
