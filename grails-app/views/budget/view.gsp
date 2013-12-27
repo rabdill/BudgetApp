@@ -1,14 +1,18 @@
 <g:render template="/templates/headerInfo" />
 <gvisualization:apiImport/>
-<gvisualization:areaCoreChart elementId="visualization" title="Cash"  columns="${ chartData.columns }" data="${ chartData.data }" />
+<gvisualization:areaCoreChart elementId="visualization" title="Cash" width="${800}" height="${500}" columns="${ chartData.columns }" data="${ chartData.data }" />
 
 	</head>
 
 	<body>
 		<h1>${session.currentBudget}</h1>
 		Add: <g:link controller="transaction">transaction</g:link> / <g:link controller="account">account</g:link><br>
-		<br />
 		
+		<br />
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+      </button>
+		<br /><br />
 	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
 		<table border="1" cellpadding="5">
 			<thead>
@@ -69,11 +73,31 @@
 	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
 	
 
-        <div id="visualization" style="width: 800px; height: 500px"></div>		
+        		
   
 	</div>
 	
 	
+	
+	
+	<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Beautiful baby graph</h4>
+          </div>
+          <div class="modal-body">
+            <div id="visualization" style="width: 800px; height: 500px;"></div>
+		 </div>
+     <!--      <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>  -->
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 	
 	
 	
