@@ -1,13 +1,15 @@
 <g:render template="/templates/headerInfo" />
+<gvisualization:apiImport/>
+<gvisualization:areaCoreChart elementId="visualization" title="Cash" width="${400}" height="${240}" columns="${ chartData.columns }" data="${ chartData.data }" />
 
 	</head>
 
 	<body>
 		<h1>${session.currentBudget}</h1>
 		Add: <g:link controller="transaction">transaction</g:link> / <g:link controller="account">account</g:link><br>
+		<br />
 		
-		
-	<div class="col-lg-6 col-md-6 col-sm-12">
+	
 		<table border="1" cellpadding="5">
 			<thead>
 				<tr>
@@ -59,15 +61,15 @@
 			</tbody>
 		</table>
 		
-	</div>	<!-- 	Closes table half of the page -->
 	
 	
 	
 	
-	<div class="col-lg-6 col-md-6 col-sm-12">
-		
-		
-	</div>	<!-- 	Closes graph half of the page -->
+	
+	
+
+        <div id="visualization" style="width: 600px; height: 400px;"></div>		
+  
 	
 	
 	

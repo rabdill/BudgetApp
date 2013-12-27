@@ -26,6 +26,12 @@ class BudgetController {
 	   def runningTotal = new Integer[transactionCount]						//	running total for cash
 	   def runningAccount = new Integer[accountCount][transactionCount]		//	running totals for all the accounts
 	   
+	   //	the graphing definitions:
+	   def chartData  = [:]
+	   chartData.columns = [ ['date', 'Date'], ['number', 'Cash'] ]
+	   chartData.data = []
+	   
+	   
 	   //	Store the IDs of all the accounts, in the order they're displayed
 	   def column = 0
 	   def accountIds = new Integer[accountCount]
@@ -47,6 +53,9 @@ class BudgetController {
 		   if(row > 0) runningTotal[row] = runningTotal[row-1] + it.amount
 		   else runningTotal[row] = it.amount
 		   
+		   //	Add the information to the graph:
+		   chartData.data << [ it.date, runningTotal[row] ?: 0 ]
+		   
 		   //Calculate all the account totals:
 			   allAccounts.each{
 				   if(row > 0) {
@@ -62,7 +71,7 @@ class BudgetController {
 		   row++
 	   }
 	      
-	   return [date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
+	   return [chartData:chartData, date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
    }
 	
 	
