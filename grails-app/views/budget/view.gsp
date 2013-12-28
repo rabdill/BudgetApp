@@ -36,7 +36,18 @@
     		  Graphs <span class="caret"></span>
     		</a>
     		<ul class="dropdown-menu">
-    		  	<li><g:link controller="budget" action="cash" params="[budgetSelect:currentBudget]">Cash</g:link></li>
+    		  	<li><a href="#" data-toggle="modal" data-target="#cashChartModal">Cash</a></li>
+   			 </ul>
+ 		 </li>
+ 		 
+ 		 
+ 		 <li class="dropdown">
+    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    		  Add<span class="caret"></span>
+    		</a>
+    		<ul class="dropdown-menu">
+    		  	<li><a data-toggle="modal" data-target="#addTransactionModal">Transaction</a></li>
+   			 	<li><a data-toggle="modal" data-target="#addAccountModal">Account</a></li>
    			 </ul>
  		 </li>
 	</ul>	
@@ -46,8 +57,6 @@
 			
 	<div class="col-lg-3 col-md-3 col-sm-12">
 		<h1>${session.currentBudget}</h1>
-		<p><button class="btn btn-primary" data-toggle="modal" data-target="#addTransactionModal">Add transaction</button></p>
-		<p><button class="btn btn-primary" data-toggle="modal" data-target="#addAccountModal">Add account</button></p>
 		<hr>
 		<p><g:submitButton name="actionChoice" value="Edit selected transaction" /></p>
 		<p><g:submitButton name="actionChoice" value="Delete selected transaction" /></p>
@@ -61,7 +70,7 @@
 					<th>Date</th>
 					<th>Description</th>
 					<th>Amount</th>
-					<th><a href="#" data-toggle="modal" data-target="#cashChartModal">Cash</a></th>
+					<th>Cash</th>
 				
 					<g:each in="${allAccounts}">
 						<th>${it.name }</th>

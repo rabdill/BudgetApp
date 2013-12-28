@@ -10,7 +10,7 @@
 		<g:else>
 			<h1>Edit transaction</h1>
 			<g:form name="transaction" action="edit" method="POST">
-				Date:<g:textField name="date" value="${transaction.date.format("MM/dd/yyy")}"/><br>
+				Date:<g:textField name="date" value="${transaction.date.format("MM-dd-yyyy")}"/><br>
 				Description:<g:textField name="description" value="${transaction.description }" /><br>
 				Amount:<g:textField name="amount" value="${transaction.amount }"/>
 				<g:hiddenField name="idNum" value="${transaction.id }"/>
