@@ -16,6 +16,32 @@
 	</head>
 
 	<body>
+	<ul class="nav nav-tabs">
+	  	<li><g:link controller="home">Home</g:link></li>
+  		
+  		
+  		<li class="dropdown">
+    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    		  Budgets <span class="caret"></span>
+    		</a>
+    		<ul class="dropdown-menu">
+    			<g:each in="${allBudgets}">
+    				<li><g:link action="view" controller="budget" params="[budgetSelect: it.name ]">${it.name }</g:link></li>
+				</g:each>
+    		 </ul>
+ 		 </li>
+ 		
+ 		<li class="dropdown">
+    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    		  Graphs <span class="caret"></span>
+    		</a>
+    		<ul class="dropdown-menu">
+    		  	<li><g:link controller="budget" action="cash" params="[budgetSelect:currentBudget]">Cash</g:link></li>
+   			 </ul>
+ 		 </li>
+	</ul>	
+	
+	
 	<g:form name="transactionSelector" url="[action:'alter',controller:'transaction']">
 			
 	<div class="col-lg-3 col-md-3 col-sm-12">

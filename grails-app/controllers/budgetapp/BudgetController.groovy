@@ -13,6 +13,7 @@ class BudgetController {
 	}
 	
 	def view() {
+		def allBudgets = Budget.findAll()
 		if(params.budgetSelect) session.currentBudget = Budget.findWhere(name:params.budgetSelect)
 		def allTransactions = Transaction.findAll("from Transaction as t where t.budget=:budget order by t.date",[budget:session.currentBudget])
 		def allAccounts = Account.findAll("from Account as a where a.budget=:budget",[budget:session.currentBudget])   
@@ -74,7 +75,7 @@ class BudgetController {
 		   row++
 	   }
 	      
-	   return [chartData:chartData, idNum:idNum, date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
+	   return [allBudgets:allBudgets, chartData:chartData, idNum:idNum, date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
    }
 	
 	
