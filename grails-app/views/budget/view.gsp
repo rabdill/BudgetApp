@@ -126,7 +126,7 @@
    	 <g:form name="createTransaction" controller="transaction" action="create" method="POST">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Add transaction</h4>
+        <h3 class="modal-title" id="myModalLabel" style="padding-bottom: 0px;">Add transaction</h4>
       </div>
       <div class="modal-body">
 			Date:<g:textField name="date" value="01-01-2014"/><br>
@@ -159,7 +159,6 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 
 
 	
