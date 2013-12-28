@@ -10,8 +10,7 @@ class TransactionController {
 	
 	//	Processes the transaction form:
 	def create()	{
-		def testDate = new Date[10]
-		def formattedDate = new Date().parse("MM/dd/yyyy", params.date)
+		def formattedDate = new Date().parse("MM-dd-yyyy", params.date)
 		def formattedAccountLink
 		if(params.accountFlag) formattedAccountLink = params.accountLink
 		else formattedAccountLink = null 
@@ -27,7 +26,7 @@ class TransactionController {
 		//	If it repeats:
 		if(params.repeatFlag)	{	
 			
-			def formattedRepeatDate = new Date().parse("MM/dd/yyyy", params.repeatDate)
+			def formattedRepeatDate = new Date().parse("MM-dd-yyyy", params.repeatDate)
 			
 			//	record it as a repeating transaction:
 			def newRepeater = new RepeatingTransaction(date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, repeatType:params.repeatType, repeatVariable:params.repeatVariable, repeatDate:formattedRepeatDate, budget:session.currentBudget).save(failOnError:true)
@@ -61,7 +60,7 @@ class TransactionController {
 	}
 	
 	
-	//	Editing and deleting transactions:
+	//	Form for editing and deleting transactions:
 	def alter()	{
 		def displayEditForm = 0
 		
@@ -74,6 +73,26 @@ class TransactionController {
 		else displayEditForm = 1
 		
 		return [displayEditForm:displayEditForm, transaction:transaction]
+
+	}
+	
+	//	Processing edit-transaction form:
+	def edit()	{		
+		def transaction = Transaction.load(params.int('idNum'))
+		def formattedDate = new Date().parse("MM-dd-yyyy", params.date)
+		def formattedAccountLink
+		if(params.accountFlag) formattedAccountLink = params.accountLink
+		else formattedAccountLink = null
+		
+		def bindingMap = [date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, budget:session.currentBudget]
+		transaction.date = formattedDate
+		transaction.amount = params.int('amount')
+		transaction.description = params.description
+		transaction.accountLink = formattedAccountLink
+		transaction.budget = session.currentBudget
+		transaction.save(failOnError:true)
+				
+		return [currentBudget:session.currentBudget]
 
 	}
 }
