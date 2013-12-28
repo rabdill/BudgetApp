@@ -21,9 +21,8 @@
 	<div class="col-lg-3 col-md-3 col-sm-12">
 		<h1>${session.currentBudget}</h1>
 		<p><button class="btn btn-primary" data-toggle="modal" data-target="#addTransactionModal">Add transaction</button></p>
-		
-		<p><g:link controller="account">Add account</g:link></p>
-		
+		<p><button class="btn btn-primary" data-toggle="modal" data-target="#addAccountModal">Add account</button></p>
+		<hr>
 		<p><g:submitButton name="actionChoice" value="Edit selected transaction" /></p>
 		<p><g:submitButton name="actionChoice" value="Delete selected transaction" /></p>
     </div>
@@ -126,7 +125,7 @@
    	 <g:form name="createTransaction" controller="transaction" action="create" method="POST">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title" id="myModalLabel" style="padding-bottom: 0px;">Add transaction</h4>
+        <h3 class="modal-title" id="myModalLabel" >Add transaction</h4>
       </div>
       <div class="modal-body">
 			Date:<g:textField name="date" value="01-01-2014"/><br>
@@ -150,6 +149,38 @@
 			(x:<g:textField name="repeatVariable"/>)<br>
 			Until:<g:textField name="repeatDate" value="12-31-2014"/><br>
 		
+      </div><!-- 	/modalcontent -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <g:submitButton class="btn btn-primary" name="submitButton" value="Create" />
+      </div>
+      </g:form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+<!-- add account modal ******                   -->
+
+<div class="modal fade" id="addAccountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+   	 <g:form name="createAccount" controller="account" action="create" method="POST">
+	   	  <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h3 class="modal-title" id="myModalLabel" >Add account</h3>
+	      </div>
+	     <div class="modal-body">
+    		<p>Name:<g:textField name="name"/></p>
+			<p>Starting value:<g:textField name="startValue" /></p>
+			<p>Does this account track an asset (like a savings account) or a liability (like a credit card balance)?</p>
+			<p><select name="multiplier">
+				<option value="-1">Money I have</option>
+				<option value="1">Money I owe</option>
+			</select></p>
       </div><!-- 	/modalcontent -->
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
