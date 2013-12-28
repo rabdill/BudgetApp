@@ -1,34 +1,56 @@
 <g:render template="/templates/headerInfo" />
+
+<!--  http://grails.org/plugin/google-visualization -->
 <gvisualization:apiImport/>
 <gvisualization:areaCoreChart elementId="visualization" title="Cash" width="${600}" height="${350}" columns="${ chartData.columns }" data="${ chartData.data }" />
 
+<style>
+	th {
+	text-align: right;
+	}
+	
+	td	{
+	border-right:solid 2px #C4C4C4;
+	}
+</style>
 	</head>
 
 	<body>
+	<g:form name="transactionSelector" url="[action:'alter',controller:'transaction']">
+			
 	<div class="col-lg-3 col-md-3 col-sm-12">
 		<h1>${session.currentBudget}</h1>
 		<p><g:link controller="transaction">Add transaction</g:link></p>
 		
 		<p><g:link controller="account">Add account</g:link></p>
+		
+		<p><g:submitButton name="actionChoice" value="Edit selected transaction" /></p>
+		<p><g:submitButton name="actionChoice" value="Delete selected transaction" /></p>
     </div>
 	<div class="col-lg-9 col-md-9 col-sm-12">
 		<br />
-		<table border="1" cellpadding="5">
+		<table class="table table-striped">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Date</th>
 					<th>Description</th>
 					<th>Amount</th>
-					<th style="padding: 0 14px;"><a href="#" data-toggle="modal" data-target="#myModal">Cash</a></th>
+					<th><a href="#" data-toggle="modal" data-target="#myModal">Cash</a></th>
+				
 					<g:each in="${allAccounts}">
 						<th>${it.name }</th>
 					</g:each>
+					
 				</tr>
 			</thead>
-			<tbody>
+			
+			
+				<tbody align="right">
 				<% iterate = 0 %>
 				<g:while test="${iterate < transactionCount}">
 				    <tr>
+				    <td><g:radio name="transactionChoice" value="${idNum[iterate] }"/></td>
 				    <td><g:formatDate format="MM-dd-yyyy" date="${date[iterate]}"/></td>
 				    <td>${description[iterate] }</td>
 				    
@@ -63,6 +85,8 @@
 				</g:while>
 			</tbody>
 		</table>
+		</g:form>
+		
 		<br />
 	</div>	
 	

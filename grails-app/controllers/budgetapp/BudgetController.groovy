@@ -18,6 +18,7 @@ class BudgetController {
 		def allAccounts = Account.findAll("from Account as a where a.budget=:budget",[budget:session.currentBudget])   
 		def transactionCount = Transaction.countByBudget(session.currentBudget)
 		def accountCount = Account.countByBudget(session.currentBudget)
+	   def idNum = new Integer[transactionCount]
 	   def date = new Date[transactionCount]
 	   def description = new String[transactionCount]
 	   def amount = new Integer[transactionCount]
@@ -45,6 +46,8 @@ class BudgetController {
 	   def row = 0
 	   allTransactions.each{
 		   column = 0
+		   
+		   idNum[row] = it.id
 		   date[row] = it.date
 		   description[row] = it.description
 		   amount[row] = it.amount
@@ -71,7 +74,7 @@ class BudgetController {
 		   row++
 	   }
 	      
-	   return [chartData:chartData, date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
+	   return [chartData:chartData, idNum:idNum, date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
    }
 	
 	

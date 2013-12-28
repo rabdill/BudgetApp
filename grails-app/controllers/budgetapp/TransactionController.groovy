@@ -59,4 +59,21 @@ class TransactionController {
 		return [currentBudget:session.currentBudget, repeated:repeated]
 		
 	}
+	
+	
+	//	Editing and deleting transactions:
+	def alter()	{
+		def displayEditForm = 0
+		
+		def transaction = Transaction.load(params.int('transactionChoice'))
+		
+		if(params.actionChoice == 'Delete selected transaction')	{
+			transaction.delete()						
+		}
+		
+		else displayEditForm = 1
+		
+		return [displayEditForm:displayEditForm, transaction:transaction]
+
+	}
 }
