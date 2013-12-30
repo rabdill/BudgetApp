@@ -15,6 +15,8 @@
     			<g:each in="${allBudgets}">
     				<li><g:link action="view" controller="budget" params="[budgetSelect: it.name ]">${it.name }</g:link></li>
 				</g:each>
+				<li class="divider"></li>
+				<li><g:link controller="budget" action="createForm">Add budget</g:link></li>
     		 </ul>
  		 </li>
  		
@@ -39,12 +41,12 @@
 	</ul>	
 	
 	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-		<h1>Budget App</h1>
+		<h1>Rich's Budget Thing</h1>
 		<h2>It's so fun</h2>
 		<h3>You should use it</h3>
 		<h4>There is not a lot of content</h4>
 		<h5>But it's getting there</h5>
-		<h6>Enjoy your stay</h6>
+		<h6>Enjoy</h6>
 	</div>
 	     
          
