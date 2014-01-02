@@ -13,7 +13,7 @@ class RepeatingTransaction {
 	String description
 	Integer accountLink
 	String repeatType	// "days"=repeats every x days, or "date"=repeats once a month
-	Integer repeatVariable	//	how many days between repeats, if "days" is selected
+	Integer repeatVariable	//	how many days between repeats, if "days" is selected. Otherwise null.
 	Date repeatDate //	the original end date of the event. Used
 					//	when asking user to select which repeating
 					//	events to continue repeating.
@@ -23,6 +23,7 @@ class RepeatingTransaction {
 	static mapping = {
 		sort date: "asc"
 	}
+	
     static constraints = {
 		date blank: false
 		amount blank: false

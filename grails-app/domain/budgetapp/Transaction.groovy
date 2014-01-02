@@ -5,7 +5,7 @@ class Transaction {
 	Integer amount
 	String description
 	Integer accountLink //	If the transaction affects another account,
-						//	i.e. credit card payment
+						//	i.e. credit card payment. The ID of the account.
 	
 	static belongsTo = [budget:Budget]
 	
