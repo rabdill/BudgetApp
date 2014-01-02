@@ -1,3 +1,5 @@
+<!-- Interstitial page that creates a new account -->
+
 <g:render template="/templates/headerInfo" />
 
 <!-- 	timer	 -->

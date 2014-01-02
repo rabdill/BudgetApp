@@ -3,6 +3,7 @@
 	</head>
 	
 	<body>
+	<!-- 	Nav menu -->
 	<ul class="nav nav-tabs">
 	  	<li><g:link controller="home">Home</g:link></li>
   		<li><g:link controller="budget" action="view" params="[budgetSelect:currentBudget]">View budget</g:link></li>

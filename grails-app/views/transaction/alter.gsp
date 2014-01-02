@@ -1,3 +1,4 @@
+<!-- Transaction edit form. Also serves as delete confirmation page.	 -->
 <g:render template="/templates/headerInfo" />
 
 	</head>
@@ -15,7 +16,7 @@
 				Amount:<g:textField name="amount" value="${transaction.amount }"/>
 				<g:hiddenField name="idNum" value="${transaction.id }"/>
 			<hr>
-			<strong>Don't forget to set these sections again:</strong><br />
+			<strong>Don't forget to set this section again:</strong><br />
 			This transaction affects another account:<g:checkBox name="accountFlag" /><br>
 			(Which one?)<g:select name="accountLink"
 	          from="${allAccounts}"
