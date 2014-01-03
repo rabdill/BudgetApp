@@ -14,7 +14,10 @@
 				Date:<g:textField name="date" value="${transaction.date.format("MM-dd-yyyy")}"/><br>
 				Description:<g:textField name="description" value="${transaction.description }" /><br>
 				Amount:<g:textField name="amount" value="${transaction.amount }"/>
-				<g:hiddenField name="idNum" value="${transaction.id }"/>
+				<g:hiddenField name="idNum" value="${transaction.id }"/><br>
+				<br>
+				<g:radio name="alterAll" value="0" checked="true"/>Edit just this transaction
+				<g:radio name="alterAll" value="1"/>Edit all transactions with this name
 			<hr>
 			<strong>Don't forget to set this section again:</strong><br />
 			This transaction affects another account:<g:checkBox name="accountFlag" /><br>

@@ -92,14 +92,36 @@ class TransactionController {
 		if(params.accountFlag) formattedAccountLink = params.accountLink
 		else formattedAccountLink = null
 		
+		// edit the selected transaction
 		transaction.date = formattedDate
 		transaction.amount = params.int('amount')
 		transaction.description = params.description
 		transaction.accountLink = formattedAccountLink
-		transaction.budget = session.currentBudget
 		transaction.save(failOnError:true)
+		
+		if(params.alterAll=='1')	{	//	check if all transactions are supposed to be edited
+			
+			//	Get all the transactions that have the same name as the one being edited
+			def affectedTransactions = Transaction.findAll("from Transaction as t where t.description=:description",[description:transaction.description])
+			
+			//	Rewrite them all
+			affectedTransactions.each	{
+				it.amount = params.int('amount')
+				it.description = params.description
+				it.accountLink = formattedAccountLink
+				it.save(failOnError:true)
+			}
+			
+			//	Edit the entry in the RepeatingTransaction table
+			def affectedRepeating = RepeatingTransaction.find("from RepeatingTransaction as r where r.description=:description",[description:transaction.description])
+			affectedRepeating.amount = params.int('amount')
+			affectedRepeating.description = params.description
+			affectedRepeating.accountLink = formattedAccountLink
+			affectedRepeating.save(failOnError:true)
+			
+			}
 				
-		return [currentBudget:session.currentBudget]
+		return [formattedDate:formattedDate]
 
 	}
 }
