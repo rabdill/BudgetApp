@@ -82,9 +82,17 @@ class TransactionController {
 	}
 	
 	
-	//	Processing edit-transaction form:
+	//	Processing edit/delete transaction form:
 	def edit()	{		
 		def transaction = Transaction.load(params.int('idNum'))
+		
+		if(params.submitButton == 'Delete')
+				{
+				if(params.int('deleteAll') == 0) transaction.delete()
+			}
+		
+		
+		else	{
 		def formattedDate = new Date().parse("MM-dd-yyyy", params.date)
 		def formattedAccountLink
 		if(params.accountFlag) formattedAccountLink = params.accountLink
@@ -118,8 +126,8 @@ class TransactionController {
 			affectedRepeating.save(failOnError:true)
 			
 			}
-				
-		return [formattedDate:formattedDate]
+		}	
+		return []
 
 	}
 }
