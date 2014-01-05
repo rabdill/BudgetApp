@@ -16,6 +16,8 @@
 
 
 		</g:if>
+		
+		
 		<g:else>
 			<h1>Edit transaction</h1>
 				Date:<g:textField name="date" value="${transaction.date.format("MM-dd-yyyy")}"/><br>

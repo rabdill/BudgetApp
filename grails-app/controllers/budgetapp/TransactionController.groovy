@@ -86,12 +86,23 @@ class TransactionController {
 	def edit()	{		
 		def transaction = Transaction.load(params.int('idNum'))
 		
+		//	If you're trying to delete it:
 		if(params.submitButton == 'Delete')
 				{
-				if(params.int('deleteAll') == 0) transaction.delete()
+					
+				if(params.int('deleteAll') == 0) transaction.delete()	//	If it's only "delete this one"
+				
+				else	{
+				def deletedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.date >=:date",[description:transaction.description, date:transaction.date])
+				deletedTransactions.each	{
+					it.delete()
+				}
 			}
+				
+		}
 		
 		
+		//	If you're trying to edit it:
 		else	{
 		def formattedDate = new Date().parse("MM-dd-yyyy", params.date)
 		def formattedAccountLink
@@ -105,13 +116,13 @@ class TransactionController {
 		transaction.accountLink = formattedAccountLink
 		transaction.save(failOnError:true)
 		
-		if(params.alterAll=='1')	{	//	check if all transactions are supposed to be edited
+		if(params.editAll=='1')	{	//	check if all transactions are supposed to be edited
 			
 			//	Get all the transactions that have the same name as the one being edited
-			def affectedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.date >=:date",[description:transaction.description, date:transaction.date])
+			def editedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.date >=:date",[description:transaction.description, date:transaction.date])
 			
 			//	Rewrite them all
-			affectedTransactions.each	{
+			editedTransactions.each	{
 				it.amount = params.int('amount')
 				it.description = params.description
 				it.accountLink = formattedAccountLink
