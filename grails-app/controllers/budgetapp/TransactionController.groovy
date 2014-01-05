@@ -69,14 +69,12 @@ class TransactionController {
 	
 	//	Form for editing and deleting transactions:
 	def alter()	{
-		def displayEditForm = 0
+		def displayEditForm
 		
 		def transaction = Transaction.load(params.int('transactionChoice'))	//	get the transaction
 		
-		if(params.actionChoice == 'Delete selected transaction')	{
-			transaction.delete()						
-		}
-		
+		if(params.actionChoice == 'Delete selected transaction') displayEditForm = 0
+
 		else displayEditForm = 1	//	If the transaction isn't deleted, tell the view to ask how to edit it
 		
 		return [displayEditForm:displayEditForm, transaction:transaction]
@@ -102,7 +100,7 @@ class TransactionController {
 		if(params.alterAll=='1')	{	//	check if all transactions are supposed to be edited
 			
 			//	Get all the transactions that have the same name as the one being edited
-			def affectedTransactions = Transaction.findAll("from Transaction as t where t.description=:description",[description:transaction.description])
+			def affectedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.date >=:date",[description:transaction.description, date:transaction.date])
 			
 			//	Rewrite them all
 			affectedTransactions.each	{
