@@ -59,6 +59,7 @@
     		 </ul>
     	</li>
     	
+    	<li><g:link controller="logout">Sign out</g:link></li>
 	</ul>	
 	
 	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
