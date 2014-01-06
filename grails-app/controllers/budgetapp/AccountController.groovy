@@ -2,7 +2,8 @@ package budgetapp
 
 class AccountController {
 	
-	//	The index is just the acount form, and doesn't require any info.
+	//	The index is just the account form, and doesn't require any info.
+
 	def index() {
 		
 	}	

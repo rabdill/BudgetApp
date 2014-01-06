@@ -97,6 +97,10 @@ class TransactionController {
 				deletedTransactions.each	{
 					it.delete()
 				}
+				
+				//	Delete the entry in the RepeatingTransaction table
+				def affectedRepeating = RepeatingTransaction.find("from RepeatingTransaction as r where r.description=:description",[description:transaction.description])
+				affectedRepeating.delete()
 			}
 				
 		}
