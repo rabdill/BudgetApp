@@ -93,6 +93,7 @@ log4j = {
 
 
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.auth.loginFormUrl = '/'
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'budgetapp.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'budgetapp.UserUserRole'
 grails.plugin.springsecurity.authority.className = 'budgetapp.UserRole'
