@@ -97,11 +97,11 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'budgetapp.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'budgetapp.UserUserRole'
 grails.plugin.springsecurity.authority.className = 'budgetapp.UserRole'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              		['permitAll'],
-	'/Account/*':                       	['permitAll'],
-	'/Budget/*':                    		['permitAll'],
-	'/Home/*':                 				['permitAll'],
-	'/RepeatingTransaction/*':   			['permitAll'],
-	'/Transaction/*':  						['permitAll'],
+	'/Account/*':                       	['ROLE_USER'],
+	'/Budget/*':                    		['ROLE_USER'],
+	'/Home/*':                 				['ROLE_USER'],
+	'/RepeatingTransaction/*':   			['ROLE_USER'],
+	'/Transaction/*':  						['ROLE_USER'],
+	'/*':                              		['permitAll'],
 ]
 

@@ -1,16 +1,30 @@
 import budgetapp.Budget
 import budgetapp.User
 import budgetapp.UserRole
+import budgetapp.UserUserRole
 import budgetapp.Account
 import budgetapp.Transaction
 
 class BootStrap {
 
+	def springSecurityService
+	
     def init = { servletContext ->
 		
 		//	Setting up the two kinds of users:
 		def userRole = UserRole.findByAuthority('ROLE_USER') ?: new UserRole(authority: 'ROLE_USER').save(failOnError: true)
 		def adminRole = UserRole.findByAuthority('ROLE_ADMIN') ?: new UserRole(authority: 'ROLE_ADMIN').save(failOnError: true)
+		
+		//	Making rabdill user
+		def rabdillUser = User.findByUsername('rabdill') ?: new User(
+			username: 'rabdill',
+			password: 'admin',
+			enabled: true).save(failOnError: true)
+
+		if (!rabdillUser.authorities.contains(userRole)) {
+			UserUserRole.create rabdillUser, userRole
+		}
+		
 		
 		
 		
