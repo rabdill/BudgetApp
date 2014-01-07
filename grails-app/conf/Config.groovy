@@ -100,9 +100,10 @@ grails.plugin.springsecurity.authority.className = 'budgetapp.UserRole'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/Account/*':                       	['ROLE_USER'],
 	'/Budget/*':                    		['ROLE_USER'],
-	'/Home/*':                 				['permitAll'],	//	Has to be permitted because that's where the login page is
+	'/Home/*':                 				['ROLE_USER'],	//	Has to be permitted because that's where the login page is
 	'/RepeatingTransaction/*':   			['ROLE_USER'],
 	'/Transaction/*':  						['ROLE_USER'],
 	'/*':                              		['permitAll'],
+	'/Public/*':							['permitAll']
 ]
 

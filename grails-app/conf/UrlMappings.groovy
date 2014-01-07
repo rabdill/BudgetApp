@@ -7,8 +7,7 @@ class UrlMappings {
 			}
 		}
 
-		"/"(controller: "home", action: "index")	//	The "home" controller is mapped as default because
-													//un-logged-in people will always be redirected anyway
+		"/"(controller: "public", action: "index")
 		"/login/$action?"(controller: "login")
 		"/logout/$action?"(controller: "logout")
 		"500"(view:'/error')
