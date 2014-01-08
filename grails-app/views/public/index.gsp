@@ -1,25 +1,74 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	
-	</head>
-	<body>
-		 <form method="POST" action="${resource(file: 'j_spring_security_check')}">
-		  <table>
-		    <tr>
-		      <td>Username:</td><td><g:textField name="j_username"/></td>
-		    </tr>
-		    <tr>
-		      <td>Password:</td><td><input name="j_password" type="password"/></td>
-		    </tr>
-		    <tr>
-		      <td colspan="2"><g:submitButton name="login" value="Login"/></td>
-		    </tr>
-		    <tr>
-		      <td colspan="2">try "glen" or "peter" with "password"</td>
-		    </tr>
-		  </table>              
-		</form>
-		 
-	</body>
+<g:render template="/templates/headerInfo" />
+
+<title>Jumbotron Template for Bootstrap</title>
+		
+</head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right" method="POST" action="${resource(file: 'j_spring_security_check')}">
+           <div class="form-group">
+              <g:textField name="j_username" class="form-control" />
+            </div>
+            <div class="form-group">
+           	 <input name="j_password" type="password" class="form-control" />
+            </div>
+	           <g:submitButton name="login" value="Login"/>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hello, world!</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+  </body>
 </html>
+
