@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <g:render template="/templates/headerInfo" />
 
-<title>Jumbotron Template for Bootstrap</title>
+<title>Loot Tracker – Personal Budgeting</title>
 		
 </head>
 
@@ -16,15 +16,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Loot Tracker</a>
         </div>
         <div class="navbar-collapse collapse">
         <form class="navbar-form navbar-right" method="POST" action="${resource(file: 'j_spring_security_check')}">
            <div class="form-group">
-              <g:textField name="j_username" class="form-control" />
+              <g:textField name="j_username" class="form-control" placeholder="Username" />
             </div>
             <div class="form-group">
-           	 <input name="j_password" type="password" class="form-control" />
+           	 <input name="j_password" type="password" class="form-control" placeholder="Password" />
             </div>
 	           <g:submitButton name="login" value="Login"/>
           </form>
@@ -35,23 +35,32 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+        <h1>You know you need a budget.</h1>
+        <p>It's time to start keeping track of your money. There are plenty of good options out there — but if
+        they were good for <em>you</em>, you'd be using them already.</p>
+        
+        <p><strong>Loot Tracker</strong> is a new way to keep track of your money and
+        where it will be. You don't need to come up with monthly estimates or long-term
+        goals — just enter your bills and let Loot Tracker do the rest.</p>
+        <p><a class="btn btn-primary btn-lg" role="button">Sign up today &raquo;</a></p>
       </div>
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <h2>How does it work?</h2>
+          <p>There isn't any mystery here: <strong>It's a big list of transactions.</strong> Say you get paid $1,000 every two weeks. Loot Tracker
+          will go through the entire year and note, once every two weeks, a "+$1,000."</p>
+          <p>Now, let's say you have to pay a $65 phone bill on the 15th of every month. Loot Tracker will go through
+          the year and, on the 15th of every month, record a "-$65." Repeat this process for all your bills, plus a buffer
+          to account for variable things like food and gas, and you've got <strong>a complete list of how much money you'll have</strong> on
+          every day, all year.</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <h2>Why is it better?</h2>
+          <p>Put a thing here about how monthly budgets obscure things like paydays, and the timing of money</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
        </div>
         <div class="col-md-4">
