@@ -12,7 +12,10 @@ class User {
 	boolean passwordExpired
 
 	static transients = ['springSecurityService']
-
+	
+	static hasMany = [budgets: Budget]
+	
+	
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false

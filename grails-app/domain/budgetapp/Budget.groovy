@@ -4,6 +4,7 @@ class Budget {
 	String name
 	String toString() {return name	}
 	
+	static belongsTo = [user:User]
 	static hasMany = [transactions:Transaction, accounts:Account, repeatingTransactions: RepeatingTransaction]
 	
 	

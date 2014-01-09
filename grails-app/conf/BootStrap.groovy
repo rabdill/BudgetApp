@@ -29,7 +29,7 @@ class BootStrap {
 		
 		
 		//	Making a sample budget:
-		def richard = new Budget(name: "RichBudg")
+		def richard = new Budget(name: "RichBudg",user:rabdillUser)
 		.addToTransactions(date: "12/25/2013", description: "Xmas", amount: "1000")		
 		.addToTransactions(date: "12/31/2013", description: "found in road", amount: "203")
 		.addToTransactions(date: "12/03/2013", description: "starter", amount: "20")

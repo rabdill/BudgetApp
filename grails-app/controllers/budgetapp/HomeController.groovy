@@ -5,7 +5,8 @@ class HomeController {
 	def springSecurityService
 	//	Homepage
     def index() {
-		def allBudgets = Budget.findAll()
+		def user = User.get(springSecurityService.principal.id)
+		def allBudgets = Budget.findAllByUser(user)
 		
 		return [allBudgets:allBudgets]
 	}

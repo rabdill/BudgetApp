@@ -1,21 +1,25 @@
 package budgetapp
-
+import budgetapp.User
 
 
 //	Graphing, maybe: http://sysgears.com/articles/drawing-charts-grails-0/
 
 class BudgetController {
 	
+	def springSecurityService
+	
 	//	Asks user what budget to open:
 	def index()	{
-		def allBudgets = Budget.findAll()
+		def user = User.get(springSecurityService.principal.id)
+		def allBudgets = Budget.findAllByUser(user)
 		
 		return [allBudgets:allBudgets]
 	}
 	
 	//	Opens the selected budget:
 	def view() {
-		def allBudgets = Budget.findAll()		//	Loaded for the top menu where you can select other budgets
+		def user = User.get(springSecurityService.principal.id)
+		def allBudgets = Budget.findAllByUser(user)		//	Loaded for the top menu where you can select other budgets
 		if(params.budgetSelect) session.currentBudget = Budget.findWhere(name:params.budgetSelect)	//	If the user came from the index (Where the "budgetSelect" param came from),
 																									//	set the session's budget to be that one. Otherwise, it's assumed the session
 																									//	budget is already set.
