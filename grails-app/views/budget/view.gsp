@@ -52,7 +52,7 @@
  		 </li>
 	</ul>	
 	
-	
+<g:if test="${ownedByUser == 1 }" >		
 	<g:form name="transactionSelector" url="[action:'alter',controller:'transaction']">
 			
 	<div class="col-lg-3 col-md-3 col-sm-12">
@@ -226,7 +226,12 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+</g:if>
 
+
+<g:else>
+<br /><br /><h2>Error: This either isn't your budget, or it doesn't exist.</h2>
+</g:else>
 	
 	
 	</body>

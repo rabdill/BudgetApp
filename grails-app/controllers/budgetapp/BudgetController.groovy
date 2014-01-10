@@ -2,8 +2,6 @@ package budgetapp
 import budgetapp.User
 
 
-//	Graphing, maybe: http://sysgears.com/articles/drawing-charts-grails-0/
-
 class BudgetController {
 	
 	def springSecurityService
@@ -21,8 +19,15 @@ class BudgetController {
 		def user = User.get(springSecurityService.principal.id)
 		def allBudgets = Budget.findAllByUser(user)		//	Loaded for the top menu where you can select other budgets
 		if(params.budgetSelect) session.currentBudget = Budget.findWhere(name:params.budgetSelect)	//	If the user came from the index (Where the "budgetSelect" param came from),
-																									//	set the session's budget to be that one. Otherwise, it's assumed the session
-																									//	budget is already set.
+		
+		def ownedByUser		//	Checks to see if the budget is owned by the user
+		if(session.currentBudget)	{	//Checks to see if the selected budget is real
+				def realOwner = session.currentBudget.user																						
+				if(user == realOwner) ownedByUser=1
+				else ownedByUser=0	
+		}
+		else ownedByUser = 0	//if selected budget isn't real, throw the "nonexistent budget" error
+		
 		def allTransactions = Transaction.findAll("from Transaction as t where t.budget=:budget order by t.date",[budget:session.currentBudget])	//	Get all the transactions in the current budget
 		def allAccounts = Account.findAll("from Account as a where a.budget=:budget",[budget:session.currentBudget])   //	Get all the accounts in the current budget
 		def transactionCount = Transaction.countByBudget(session.currentBudget)		//	Count the number of transactions in the current budget. For loops.
@@ -85,7 +90,7 @@ class BudgetController {
 		   row++	//	Rotate through to the next transaction
 	   }
 	      
-	   return [allBudgets:allBudgets, chartData:chartData, idNum:idNum, date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
+	   return [ownedByUser:ownedByUser, allBudgets:allBudgets, chartData:chartData, idNum:idNum, date:date, description:description, amount:amount, runningTotal:runningTotal, transactionCount:transactionCount, allAccounts:allAccounts, runningAccount:runningAccount, accountCount:accountCount]   
    }
 	
 	
@@ -99,7 +104,8 @@ class BudgetController {
 	
 	//	Process the new budget form:
 	def create()	{
-		def newBudget = new Budget(name:params.name).save(failOnError:true)
+		def user = User.get(springSecurityService.principal.id)
+		def newBudget = new Budget(name:params.name, user:user).save(failOnError:true)
 		
 		return [newBudget:newBudget]
 		}
