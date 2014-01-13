@@ -93,13 +93,13 @@ class TransactionController {
 				if(params.int('deleteAll') == 0) transaction.delete()	//	If it's only "delete this one"
 				
 				else	{
-				def deletedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.date >=:date",[description:transaction.description, date:transaction.date])
+				def deletedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.budget=:budget and t.date >=:date",[description:transaction.description, budget:session.currentBudget, date:transaction.date])
 				deletedTransactions.each	{
 					it.delete()
 				}
 				
 				//	Delete the entry in the RepeatingTransaction table
-				def affectedRepeating = RepeatingTransaction.find("from RepeatingTransaction as r where r.description=:description",[description:transaction.description])
+				def affectedRepeating = RepeatingTransaction.find("from RepeatingTransaction as r where r.description=:description and r.budget=:budget",[description:transaction.description, budget:session.currentBudget])
 				affectedRepeating.delete()
 			}
 				
@@ -123,7 +123,7 @@ class TransactionController {
 		if(params.editAll=='1')	{	//	check if all transactions are supposed to be edited
 			
 			//	Get all the transactions that have the same name as the one being edited
-			def editedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.date >=:date",[description:transaction.description, date:transaction.date])
+			def editedTransactions = Transaction.findAll("from Transaction as t where t.description=:description and t.budget=:budget and t.date >=:date",[description:transaction.description, budget:session.currentBudget, date:transaction.date])
 			
 			//	Rewrite them all
 			editedTransactions.each	{
@@ -134,7 +134,7 @@ class TransactionController {
 			}
 			
 			//	Edit the entry in the RepeatingTransaction table
-			def affectedRepeating = RepeatingTransaction.find("from RepeatingTransaction as r where r.description=:description",[description:transaction.description])
+			def affectedRepeating = RepeatingTransaction.find("from RepeatingTransaction as r where r.description=:description and r.budget=:budget",[description:transaction.description, budget:session.currentBudget])
 			affectedRepeating.amount = params.int('amount')
 			affectedRepeating.description = params.description
 			affectedRepeating.accountLink = formattedAccountLink
