@@ -19,7 +19,6 @@ class TransactionController {
 		else formattedAccountLink = null 	//	Otherwise the transaction isn't linked to any account
 		
 		//	Create the new transaction:
-		def bindingMap = [date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, budget:session.currentBudget]
 		def newTransaction = new Transaction(date:formattedDate, amount:params.amount, description:params.description, accountLink:formattedAccountLink, budget:session.currentBudget).save(failOnError:true)
 		
 		
