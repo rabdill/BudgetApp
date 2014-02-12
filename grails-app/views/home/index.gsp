@@ -41,7 +41,10 @@
     		 </ul>
     	</li>
     	
-    	<li><g:link controller="logout">Sign out</g:link></li>
+    	<li><g:form name="signOut" url="[controller:'logout']">
+				<g:submitButton name="Sign out" value="signout" />
+			</g:form></li>	<!-- This thing is a form instead of a link because the logout controller
+								  will only accept postdata. All else returns a 405 error. -->
 	</ul>	
 	
 	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">

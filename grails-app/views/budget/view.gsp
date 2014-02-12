@@ -58,9 +58,9 @@
 	<div class="col-lg-3 col-md-3 col-sm-12">
 		<h1>${session.currentBudget}</h1>
 		<hr>
-		<p><g:submitButton name="actionChoice" class="btn-primary" value="Edit selected transaction" /></p>
-		<p><g:submitButton name="actionChoice" class="btn-primary" value="Delete selected transaction" /></p>
-    	<p><g:link action="updateForm" class="btn-primary">Update cash</g:link>
+		<p><g:submitButton name="actionChoice" class="btn btn-primary" value="Edit selected transaction" /></p>
+		<p><g:submitButton name="actionChoice" class="btn btn-primary" value="Delete selected transaction" /></p>
+    	<p><g:link action="updateForm" class="btn btn-primary">Update cash</g:link>
     </div>
 	<div class="col-lg-9 col-md-9 col-sm-12">
 		<br />

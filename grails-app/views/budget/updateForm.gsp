@@ -12,7 +12,7 @@
 	
 		<h1>Transaction info</h1>
 		<g:form name="transaction" controller="budget" action="update" method="POST">
-			Date:<g:textField name="date" value="01/01/2014"/><br>
+			Date:<g:textField name="date" value="01-01-2014"/><br>
 			Amount:<g:textField name="amount" value="1000"/>
 			   
 	        <br><g:submitButton name="submitButton" value="Update" />

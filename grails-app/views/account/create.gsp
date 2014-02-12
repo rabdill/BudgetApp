@@ -16,7 +16,7 @@
 	
 	<body onLoad="setTimeout('delayer()', 2000)">
 		<div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset1 col-sm-10 col-sm-offset-1">
-			<br><br>Creating account!
+			<br><br><h2>Creating account!</h2>
 		</div>
 		<center>
 			<img src="http://s3.argim.net/files/s/foto240x320_ru_fun_screensav_kyo.gif">
