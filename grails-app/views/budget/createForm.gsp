@@ -2,6 +2,7 @@
 	</head>
 	
 	<body>
+	<g:render template="/templates/navbar" />
 		<h1>New budget</h1>
 		<g:form name="transaction" action="create" method="POST">
 			Name:<g:textField name="name" />   

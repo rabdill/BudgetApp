@@ -16,41 +16,9 @@
 	</head>
 
 	<body>
-	<ul class="nav nav-tabs">
-	  	<li><g:link controller="home">Home</g:link></li>
-  		
-  		
-  		<li class="dropdown">
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    		  Budgets <span class="caret"></span>
-    		</a>
-    		<ul class="dropdown-menu">
-    			<g:each in="${allBudgets}">
-    				<li><g:link action="view" controller="budget" params="[budgetSelect: it.name ]">${it.name }</g:link></li>
-				</g:each>
-    		 </ul>
- 		 </li>
- 		
- 		<li class="dropdown">
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    		  Graphs <span class="caret"></span>
-    		</a>
-    		<ul class="dropdown-menu">
-    		  	<li><a href="#" data-toggle="modal" data-target="#cashChartModal">Cash</a></li>
-   			 </ul>
- 		 </li>
- 		 
- 		 
- 		 <li class="dropdown">
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    		  Add<span class="caret"></span>
-    		</a>
-    		<ul class="dropdown-menu">
-    		  	<li><a data-toggle="modal" data-target="#addTransactionModal">Transaction</a></li>
-   			 	<li><a data-toggle="modal" data-target="#addAccountModal">Account</a></li>
-   			 </ul>
- 		 </li>
-	</ul>	
+	
+	<g:render template="/templates/navbar" />
+	
 	
 <g:if test="${ownedByUser == 1 }" >		
 	<g:form name="transactionSelector" url="[action:'alter',controller:'transaction']">

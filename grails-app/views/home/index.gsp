@@ -6,46 +6,7 @@
 	
 		
 	<sec:ifAllGranted roles="ROLE_USER">	
-	<ul class="nav nav-tabs">
-	  	<li><g:link controller="home">Home</g:link></li>
-  		
-  		
-  		<li class="dropdown">
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    		  Budgets <span class="caret"></span>
-    		</a>
-    		<ul class="dropdown-menu">
-    			<g:each in="${allBudgets}">
-    				<li><g:link action="view" controller="budget" params="[budgetSelect: it.name ]">${it.name }</g:link></li>
-				</g:each>
-				<li class="divider"></li>
-				<li><g:link controller="budget" action="createForm">Add budget</g:link></li>
-    		 </ul>
- 		 </li>
- 		
- 		<li class="disabled">
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    		  Graphs <span class="caret"></span>
-    		</a>
- 		 </li>
- 		 
- 		 
- 		 <li class="dropdown">
-    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    		  Add<span class="caret"></span>
-    		</a>
-    		<ul class="dropdown-menu">
-    			<li class="disabled"><a>Transaction</a></li>
-   			 	<li class="disabled"><a>Account</a></li>
-    			<li><g:link controller="budget" action="createForm">Budget</g:link></li>
-    		 </ul>
-    	</li>
-    	
-    	<li><g:form name="signOut" url="[controller:'logout']">
-				<g:submitButton name="Sign out" value="signout" />
-			</g:form></li>	<!-- This thing is a form instead of a link because the logout controller
-								  will only accept postdata. All else returns a 405 error. -->
-	</ul>	
+	<g:render template="/templates/navbar" />	
 	
 	<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
 		<h1>Rich's Budget Thing</h1>

@@ -11,7 +11,7 @@ class BudgetController {
 		def user = User.get(springSecurityService.principal.id)
 		def allBudgets = Budget.findAllByUser(user)
 		
-		return [allBudgets:allBudgets]
+		
 	}
 	
 	//	Opens the selected budget:
@@ -96,7 +96,9 @@ class BudgetController {
 	
 	//	The form for creating a new budget:
 	def createForm()	{
-		//	nothing here for now	
+		def user = User.get(springSecurityService.principal.id)
+		def allBudgets = Budget.findAllByUser(user)
+		return [allBudgets:allBudgets]	//	Just spits out budget list for navbar
 	}
 	
 	
@@ -110,11 +112,6 @@ class BudgetController {
 		return [newBudget:newBudget]
 		}
 	
-	
-	def updateForm()	{
-		//	nothing here at the moment
-		
-	}
 	
 	def update()	{
 		def formattedDate = new Date().parse("MM-dd-yyyy", params.date)		//	Fixes the input date
