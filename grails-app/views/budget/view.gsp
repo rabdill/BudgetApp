@@ -60,10 +60,9 @@
 		<hr>
 		<p><g:submitButton name="actionChoice" class="btn btn-primary" value="Edit selected transaction" /></p>
 		<p><g:submitButton name="actionChoice" class="btn btn-primary" value="Delete selected transaction" /></p>
-    	<p><g:link action="updateForm" class="btn btn-primary">Update cash</g:link>
+    	<p><a data-toggle="modal" data-target="#updateCashModal" class="btn btn-primary">Update cash</a></p>
     </div>
 	<div class="col-lg-9 col-md-9 col-sm-12">
-		<br />
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -121,9 +120,7 @@
 			</tbody>
 		</table>
 		</g:form>
-		
-		<br />
-	</div>	
+	</div>	<!-- This generates a warning because the form starts before the div and ends before the div closes. It's cool -->	
 	
 	
 	
@@ -195,6 +192,34 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+
+
+
+<!-- update cash modal ******                   -->
+
+<div class="modal fade" id="updateCashModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+   		<g:form name="transaction" controller="budget" action="update" method="POST">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 class="modal-title" id="myModalLabel" >Update cash level</h4>
+      </div>
+      <div class="modal-body">
+		
+			Date:<g:textField name="date" value="01-01-2014"/><br>
+			Amount:<g:textField name="amount" value="1000"/>
+		
+      </div><!-- 	/modalcontent -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <g:submitButton class="btn btn-primary" name="submitButton" value="Update" />
+      </div>
+      </g:form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 
