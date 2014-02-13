@@ -152,13 +152,13 @@
 	
 <!-- add transaction modal ******                   -->
 
-<div class="modal fade" id="addTransactionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addTransactionModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
    	 <g:form name="createTransaction" controller="transaction" action="create" method="POST">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title" id="myModalLabel" >Add transaction</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" id="myModalLabel" >Add transaction</h3>
       </div>
       <div class="modal-body">
 			Date:<g:textField name="date" value="01-01-2014"/><br>
@@ -198,13 +198,13 @@
 
 <!-- update cash modal ******                   -->
 
-<div class="modal fade" id="updateCashModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateCashModal" tabindex="-1" >
   <div class="modal-dialog">
     <div class="modal-content">
    		<g:form name="transaction" controller="budget" action="update" method="POST">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title" id="myModalLabel" >Update cash level</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title" id="myModalLabel" >Update cash level</h3>
       </div>
       <div class="modal-body">
 		
@@ -226,12 +226,12 @@
 
 <!-- add account modal ******                   -->
 
-<div class="modal fade" id="addAccountModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addAccountModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
    	 <g:form name="createAccount" controller="account" action="create" method="POST">
 	   	  <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	        <h3 class="modal-title" id="myModalLabel" >Add account</h3>
 	      </div>
 	     <div class="modal-body">
