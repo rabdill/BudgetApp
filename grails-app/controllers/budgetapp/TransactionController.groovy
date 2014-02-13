@@ -76,7 +76,9 @@ class TransactionController {
 
 		else displayEditForm = 1	//	If the transaction isn't deleted, tell the view to ask how to edit it
 		
-		return [displayEditForm:displayEditForm, transaction:transaction]
+		def allAccounts = Account.findAll("from Account as a where a.budget=:budget",[budget:session.currentBudget])
+		
+		return [displayEditForm:displayEditForm, transaction:transaction, allAccounts:allAccounts]
 
 	}
 	
