@@ -177,7 +177,10 @@
       <div class="modal-body">
 		
 			Date:<g:textField name="date" value="01-01-2014"/><br>
-			Amount:<g:textField name="amount" value="1000"/>
+			Amount:<g:textField name="cash" value="1000"/><br />
+			<g:each in="${allAccounts}">
+				${it.name }:<g:textField name="${it.name }" value="1000"/> <br />
+			</g:each>
 		
       </div><!-- 	/modalcontent -->
       <div class="modal-footer">

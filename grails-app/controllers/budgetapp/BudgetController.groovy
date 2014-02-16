@@ -115,8 +115,11 @@ class BudgetController {
 	
 	def update()	{
 		def formattedDate = new Date().parse("MM-dd-yyyy", params.date)		//	Fixes the input date
-		def deletedTransactions = Transaction.findAll("from Transaction as t where t.budget=:budget and t.date <=:date",[budget:session.currentBudget, date:formattedDate])	//	Get all the transactions before the current date
 		
+		//	find the new first value of accounts:
+		
+		
+		def deletedTransactions = Transaction.findAll("from Transaction as t where t.budget=:budget and t.date <=:date",[budget:session.currentBudget, date:formattedDate])	//	Get all the transactions before the current date	
 		deletedTransactions.each {
 			it.delete()	
 		}
@@ -124,7 +127,7 @@ class BudgetController {
 		
 		//	Set the new cash amount:	
 		def fillerDescription="Updated total"
-		def newTransaction = new Transaction(date:formattedDate, amount:params.amount, description:fillerDescription, budget:session.currentBudget).save(failOnError:true)
+		def newTransaction = new Transaction(date:formattedDate, amount:params.cash, description:fillerDescription, budget:session.currentBudget).save(failOnError:true)
 		
 		
 	}
