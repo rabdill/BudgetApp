@@ -126,9 +126,15 @@ class BudgetController {
 		
 		
 		//	Set the new cash amount:	
-		def fillerDescription="Updated total"
+		def fillerDescription="Updated totals"
 		def newTransaction = new Transaction(date:formattedDate, amount:params.cash, description:fillerDescription, budget:session.currentBudget).save(failOnError:true)
 		
+		//	Set the new amount on the accounts:
+		def allAccounts = Account.findAll("from Account as a where a.budget=:budget",[budget:session.currentBudget])   //	Get all the accounts in the current budget
+		allAccounts.each {
+			def paramString = "account" + it.id
+			it.startValue = params.int(paramString)
+		}
 		
 	}
 	

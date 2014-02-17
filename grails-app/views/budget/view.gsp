@@ -179,7 +179,7 @@
 			Date:<g:textField name="date" value="01-01-2014"/><br>
 			Amount:<g:textField name="cash" value="1000"/><br />
 			<g:each in="${allAccounts}">
-				${it.name }:<g:textField name="${it.name }" value="1000"/> <br />
+				${it.name }:<g:textField name="account${it.id }" value="1000"/> <br />
 			</g:each>
 		
       </div><!-- 	/modalcontent -->
